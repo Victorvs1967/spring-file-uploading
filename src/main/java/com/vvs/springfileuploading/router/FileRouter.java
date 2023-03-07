@@ -18,7 +18,7 @@ public class FileRouter {
     return route()
       .nest(path("/api"), builder -> builder
         .POST("/upload", handler::fileUpload)
-        .GET("/download", handler::fileDownload))
+        .GET("/download/{filename}", handler::fileDownload))
       .build();
   }
   

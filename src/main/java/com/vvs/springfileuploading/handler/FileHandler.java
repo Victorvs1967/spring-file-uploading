@@ -9,10 +9,12 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import com.vvs.springfileuploading.service.FileService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class FileHandler {
