@@ -5,19 +5,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.vvs.springfileuploading.handler.FileUploadHandler;
+import com.vvs.springfileuploading.handler.FileHandler;
 
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 
 @Configuration
-public class FileUploadRouter {
+public class FileRouter {
 
   @Bean
-  public RouterFunction<ServerResponse> fileUploadFunction(FileUploadHandler handler) {
+  public RouterFunction<ServerResponse> fileUploadFunction(FileHandler handler) {
     return route()
       .nest(path("/api"), builder -> builder
-        .POST("/upload", handler::fileUpload))
+        .POST("/upload", handler::fileUpload)
+        .GET("/download", handler::fileDownload))
       .build();
   }
   
